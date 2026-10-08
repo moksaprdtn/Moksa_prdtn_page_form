@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>moksa_prdtn</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #516839;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0 auto;
+        }
+
+        
+        .halaman {
+            display: none;
+            text-align: center;
+            margin: 0 auto;
+            width: 70%;
+            max-width: 1000px;
+            padding: 30px;
+            background: #C2E2B5;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        
+        .halaman.form-align {
+            text-align: left;
+        }
+        
+        .youtube {
+            display: inline-block;
+            background-color: red;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            transition: 0.1s;
+        }
+        .youtube:hover { background-color: #0056b3; }
+        
+        .tiktok {
+            display: inline-block;
+            background-color: #000000;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            transition: 0.1s;
+        }
+        .tiktok:hover { background-color: #0056b3; }
+        
+        .instagram {
+            display: inline-block;
+            background: linear-gradient(#405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d, #f77737, #fcaf45);
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            transition: 0.1s;
+        }
+        .instagram:hover { background-color: #0056b3; }
+
+        .profile {
+            width: 225px;
+            height: 225px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #000000;
+            margin-bottom: 15px;
+        }
+        
+        
+        .halaman.aktif {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+        .btn-pulse {
+            background-color: #3b82f6;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+            animation: berdenyut 2s infinite;
+            transition: transform 0.2s;
+        }
+        .btn-pulse:hover { transform: scale(1.05); }
+
+        @keyframes berdenyut {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+            background-color: #3b82f6;
+            color: white;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn-shimmer:hover {
+            background-color: #059669;
+            transform: scale(1.05);
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+            transform: rotate(30deg) translateX(-100%);
+            animation: kilau 3s infinite;
+        }
+
+        @keyframes kilau {
+            0% { transform: rotate(30deg) translateX(-100%); }
+            20% { transform: rotate(30deg) translateX(100%); }
+            100% { transform: rotate(30deg) translateX(100%); }
+        }
+
+        .btn-kembali {
+            background-color: blue;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: background-color 0.2s;
+        }
+        .btn-kembali:hover { background-color: #dc2626; }
+        
+        .form1 {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        .form1:hover { background-color: #dc2626; }
+    </style>
+</head>
+<body>
+
+    
+    <div id="layarPertama" class="halaman aktif">
+        <img src="https://iili.io/nlybCkx.md.png" alt="foto profile" class="profile">
+        <h2>Selamat Datang!</h2>
+        <p>Hallo! Terimakasih sudah berkunjung ke situs web <b>MOKSA_PRDTN</b>.</p>
+        <br>
+        <button class="btn-pulse" onclick="pindahLayar('layarKedua')">SOSIAL MEDIA</button>
+        <br><br>
+        <button class="btn-shimmer" onclick="pindahLayar('layarKetiga')">PRODUK</button>
+    </div>
+
+    
+    <div id="layarKedua" class="halaman">
+        <h2>( Follow Sosial Media )</h2>
+        <p>Terimakasih Sudah Dukung Channel ini!</p>
+        <br>
+        <a href="https://youtube.com/@moksa-m2m?si=BPz9mhVm4ca9WqpS" class="youtube">YouTube</a>
+        <br>
+        <a href="https://www.tiktok.com/@mas_adiy2?_r=1&_t=ZS-9AMTrbDIsBb" class="tiktok">TikTok</a>
+        <br>
+        <a href="https://www.instagram.com/an_d11n?stkn=MTN0YnU4eGd5bXo5Mg==" class="instagram">Instagram</a>
+        <br><br>
+        <button class="btn-kembali" onclick="pindahLayar('layarPertama')">Kembali ke Menu Utama</button>
+    </div>
+
+    
+    <div id="layarKetiga" class="halaman">
+        <h1>Silahkan Lanjutkan Kebutuhan Pesanan Anda!</h1>
+        <p>Ada beberapa jasa yang kami tawarkan untuk pembuatan produk digital. Silakan klik tombol <b>PESAN PRODUK</b> di bawah untuk mengisi formulir pesanan.</p>
+        
+    
+        <button onclick="pindahLayar('layarKeempat')" class="form1">Pesan Produk</button>
+        <br>
+        <button class="btn-kembali" onclick="pindahLayar('layarPertama')">Kembali ke Menu Utama</button>
+    </div>
+    
+   
+    <div id="layarKeempat" class="halaman form-align">
+        <h1>ISI FORM UNTUK DATA PESANAN</h1>
+        <form action="https://formsubmit.co/entrf9@gmail.com" method="POST">
+            
+            <label for="nama">Nama Lengkap:</label><br>
+            <input type="text" id="nama" name="nama_lengkap" placeholder="Masukkan nama Anda" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email_pengguna" placeholder="contoh@email.com" required><br><br>
+
+            
+
+            <label>Jasa&Produk:</label><br>
+            
+            <input type="radio" id="Cv" name="Produk" value="CV">
+            <label for="Cv">CV</label><br>
+            
+            <input type="radio" id="Ug" name="Produk" value="UNDANGAN DIGITAL">
+            <label for="Ug">UNDANGAN DIGITAL</label><br><br>
+            
+            <input type="radio" id="Esf" name="Produk" value="Editing Skrip File,PDF ,DOCX ,SHEET ,WORLD ,DOKUMEN">
+            <label for="Esf">Editing Skrip File,PDF ,DOCX ,SHEET ,WORLD ,DOKUMEN</label><br><br>
+            
+             <input type="radio" id="Ds" name="Produk" value="DESAIN LOGO">
+            <label for="Ds">DESAIN LOGO</label><br><br>
+
+             <input type="radio" id="Dph" name="Produk" value="DESAIN POV HARGA">
+            <label for="Dph">DESAIN POV HARGA</label><br><br>
+
+             <input type="radio" id="Db" name="Produk" value="DESAIN BANNER">
+            <label for="Db">DESAIN BANNER</label><br><br>
+
+
+
+            <label for="deskripsi">Deskripsikan Pesanan Dengan Detail:<br><i>contoh: ,size A4 ,tinggi 20 ,lebar 40 dan seterus nya.</i></label><br>
+            <textarea id="deskripsi" name="deskripsi_pesanan" rows="4" cols="30" placeholder="Tulis deskripsi pesanan di sini..."></textarea><br><br>
+
+            <input type="checkbox" id="syarat" name="setuju" required>
+            <label for="syarat">Saya Telah Mengisi Form Data Pesanan Dengan Benar Dan Sesuai</label><br><br>
+
+            <button type="submit">KIRIM</button>
+        </form>
+        <br>
+        <button class="btn-kembali" onclick="pindahLayar('layarKetiga')">Kembali</button>
+    </div>
+
+    <script>
+        
+        function pindahLayar(idTujuan) {
+            
+            let semuaHalaman = document.querySelectorAll('.halaman');
+            
+           
+            semuaHalaman.forEach(function(halaman) {
+                halaman.classList.remove('aktif');
+            });
+
+           
+            let halamanAktif = document.getElementById(idTujuan);
+            if (halamanAktif) {
+                halamanAktif.classList.add('aktif');
+            }
+        }
+    </script>
+
+</body>
+  </html>
